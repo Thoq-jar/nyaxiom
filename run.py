@@ -16,7 +16,6 @@ async def run_db_init(app):
         if not task:
             db.session.add(FetchTask(task_name="dashboard", update_interval=3))
             db.session.commit()
-        print("Database initialised.")
 
 
 def create_app() -> Quart:

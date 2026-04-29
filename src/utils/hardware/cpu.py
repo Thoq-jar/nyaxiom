@@ -24,7 +24,6 @@ def macos_cpu() -> float:
 
     cmd = "top -l 1 | grep 'CPU usage' | awk '{print $3}' | cut -d'%' -f1"
     usage: str = subprocess.check_output(cmd, shell=True).decode().strip()
-    print(float(usage))
     return float(usage)
 
 
