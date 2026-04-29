@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="MaterialThemeProjectNewConfig">
+    <option name="metadata">
+      <MTProjectMetadataState>
+        <option name="migrated" value="true" />
+        <option name="pristineConfig" value="false" />
+        <option name="userId" value="-3f696933:19d49fa5475:-7ffb" />
+      </MTProjectMetadataState>
+    </option>
+  </component>
+  <component name="ProjectUserFactors">
+    <factor id="completionFinishedType">
+      <dailyData date="29-01-2026">
+        <observation name="cancelled" value="2.0" />
+        <observation name="explicitSelect" value="1.0" />
+      </dailyData>
+      <dailyData date="06-02-2026">
+        <observation name="cancelled" value="3.0" />
+      </dailyData>
+    </factor>
+    <factor id="completionType">
+      <dailyData date="29-01-2026">
+        <observation name="BASIC" value="3.0" />
+      </dailyData>
+    </factor>
+    <factor id="completionUsage">
+      <dailyData date="29-01-2026">
+        <observation name="count" value="3.0" />
+      </dailyData>
+      <dailyData date="06-02-2026">
+        <observation name="count" value="3.0" />
+      </dailyData>
+    </factor>
+    <factor id="itemPosition">
+      <dailyData date="29-01-2026">
+        <observation name="0" value="1.0" />
+      </dailyData>
+    </factor>
+    <factor id="mnemonicsUsage">
+      <dailyData date="29-01-2026">
+        <observation name="total" value="1.0" />
+        <observation name="withMnemonics" value="0.0" />
+      </dailyData>
+    </factor>
+    <factor id="prefixLength">
+      <dailyData date="29-01-2026">
+        <observation name="19" value="1.0" />
+      </dailyData>
+    </factor>
+    <factor id="prefixMatchingType">
+      <dailyData date="29-01-2026">
+        <observation name="GREEDY_WITH_CASE" value="1.0" />
+      </dailyData>
+    </factor>
+    <factor id="templatesUsage">
+      <dailyData date="29-01-2026">
+        <observation name="totalStartingWithPrefix" value="1.0" />
+      </dailyData>
+    </factor>
+    <factor id="timeBetweenTyping">
+      <dailyData date="29-01-2026">
+        <observation name="average" value="582.733333" />
+        <observation name="count" value="15.0" />
+      </dailyData>
+      <dailyData date="06-02-2026">
+        <observation name="average" value="160.636364" />
+        <observation name="count" value="11.0" />
+      </dailyData>
+    </factor>
+  </component>
+</project>
