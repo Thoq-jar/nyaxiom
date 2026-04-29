@@ -4,7 +4,7 @@
     --bg-card: #1c1c1c;
     --text-primary: #ffffff;
     --text-secondary: #888888;
-    --accent: #ff6b00;
+    --accent: oklch(75% 0.18 350);
     --accent-dark: #3a2415;
     --sidebar-width: 250px;
     --right-panel-width: 350px;
@@ -14,6 +14,12 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+}
+
+.accent-gradient {
+    background: linear-gradient(to bottom in oklab,
+            oklch(90% 0.05 0) 0%,
+            oklch(75% 0.18 350) 100%);
 }
 
 body {

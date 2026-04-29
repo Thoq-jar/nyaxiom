@@ -28,11 +28,11 @@ def inject_globals():
 async def index():
     hour = datetime.now().hour
     if hour < 12:
-        greeting = "Good morning!"
+        greeting = "Good morning"
     elif 12 <= hour < 18:
-        greeting = "Good afternoon!"
+        greeting = "Good afternoon"
     else:
-        greeting = "Good evening!"
+        greeting = "Good evening"
 
     weather = await get_weather_data()
     today_date = datetime.now().strftime("%b %d")

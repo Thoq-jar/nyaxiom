@@ -2,13 +2,20 @@
     <div class="stat-title">{{ title }}</div>
     <div class="progress-circle">
         <svg viewBox="0 0 100 100">
+            <defs>
+                {% set gradient_id = "gradient-" ~ title.lower() %}
+                <linearGradient id="{{ gradient_id }}" x1="1" y1="0" x2="0" y2="0">
+                    <stop offset="0%" stop-color="oklch(90% 0.05 0)" />
+                    <stop offset="100%" stop-color="oklch(75% 0.18 350)" />
+                </linearGradient>
+            </defs>
             <circle class="progress-bg" cx="50" cy="50" r="45"></circle>
             <circle class="progress-ticks" cx="50" cy="50" r="45"></circle>
             {% set radius = 45 %}
             {% set circumference = 282.74 %}
             {% set offset = circumference - (circumference * percentage / 100) %}
             <circle class="progress-value" cx="50" cy="50" r="45" 
-                style="stroke-dasharray: {{ circumference }}; stroke-dashoffset: {{ offset }};">
+                style="stroke-dasharray: {{ circumference }}; stroke-dashoffset: {{ offset }}; stroke: url(#{{ gradient_id }});">
             </circle>
             <circle class="progress-dot" cx="50" cy="50" r="3"
                 style="transform-origin: 50px 50px; transform: rotate({{ (percentage * 3.6) }}deg) translate(45px);">
