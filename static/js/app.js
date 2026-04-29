@@ -12,8 +12,8 @@ async function updateStats() {
 
         updateDial('CPU', cpuData.usage);
         updateDial('RAM', ramData.usage);
-    } catch(nyaaaerr) {
-        console.error('Oh noes! An nyerror occurred trying to update the statistics:', nyaaaerr);
+    } catch(err) {
+        console.error('Error updating statistics:', err);
     }
 }
 

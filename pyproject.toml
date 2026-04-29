@@ -3,8 +3,11 @@ name = "nyaxiom"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.14"
+requires-python = ">=3.13"
 dependencies = [
+    "flask-sqlalchemy>=3.1.1",
     "httpx>=0.28.1",
     "quart>=0.20.0",
+    "quart-flask-patch>=0.3.0",
+    "uvicorn>=0.46.0",
 ]
