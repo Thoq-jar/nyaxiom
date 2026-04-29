@@ -1,0 +1,21 @@
+{% extends "base.jinja2" %}
+
+{% block content %}
+<main>
+    <h1 class="greeting">{{ greeting }}, User!</h1>
+    
+    <div class="stats-grid">
+        {% set stats = [
+            {'title': 'CPU', 'percentage': 0},
+            {'title': 'RAM', 'percentage': 0}
+        ] %}
+        {% for stat in stats %}
+            {% set title = stat.title %}
+            {% set percentage = stat.percentage %}
+            {% include 'partials/_stat_card.jinja2' %}
+        {% endfor %}
+    </div>
+</main>
+
+{% include 'partials/_weather_panel.jinja2' %}
+{% endblock %}

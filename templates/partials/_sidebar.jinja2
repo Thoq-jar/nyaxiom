@@ -1,0 +1,27 @@
+<div class="sidebar">
+    <div class="logo">
+        <img src="/favicon.svg" alt="Axiom Logo" class="logo-img">
+        <span class="logo-text">Axiom</span>
+    </div>
+    
+    <ul class="nav-links">
+        {% for item in nav_items %}
+        <li class="nav-item">
+            <a href="{{ item.url }}" class="nav-link {{ 'active' if active_path == item.url else '' }}">
+                {% if item.icon %}
+                <img src="{{ item.icon }}" alt="{{ item.name }}">
+                {% else %}
+                <i>☰</i>
+                {% endif %}
+                <span>{{ item.name }}</span>
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+
+    <div class="sidebar-footer">
+        <a href="/settings" class="settings-btn {{ 'active' if active_path == '/settings' else '' }}">
+            <img src="/static/image/settings.svg" alt="Settings">
+        </a>
+    </div>
+</div>

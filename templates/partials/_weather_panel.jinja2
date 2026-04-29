@@ -1,0 +1,25 @@
+<div class="right-panel">
+    <div class="location">{{ location }}</div>
+    
+    <div class="weather-main">
+        <img src="{{ current_icon }}" alt="Weather Icon" class="weather-icon-img">
+        <div class="temperature">{{ current_temp }}</div>
+    </div>
+
+    <div class="forecast-card">
+        <div class="forecast-header">
+            <h2 class="forecast-title">Today</h2>
+            <div class="forecast-date">{{ today_date }}</div>
+        </div>
+
+        <div class="hourly-forecast">
+            {% for item in forecast %}
+            <div class="hour-item">
+                <div class="hour-temp">{{ item.temp }}</div>
+                <img src="{{ item.icon_url }}" alt="Icon" class="hour-icon-img">
+                <div class="hour-val">{{ item.val }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>

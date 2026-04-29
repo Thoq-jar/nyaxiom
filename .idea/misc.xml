@@ -9,6 +9,9 @@
       </MTProjectMetadataState>
     </option>
   </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_25" default="true" project-jdk-name="zulu-25" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/out" />
+  </component>
   <component name="ProjectUserFactors">
     <factor id="completionFinishedType">
       <dailyData date="29-01-2026">
