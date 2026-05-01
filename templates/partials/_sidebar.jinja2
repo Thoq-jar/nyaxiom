@@ -3,7 +3,7 @@
         <img src="/favicon.svg" alt="Axiom Logo" class="logo-img">
         <span class="logo-text">Axiom</span>
     </div>
-    
+
     <ul class="nav-links">
         {% for item in nav_items %}
         <li class="nav-item">
@@ -19,9 +19,12 @@
         {% endfor %}
     </ul>
 
-    <div class="sidebar-footer">
+    <div class="sidebar-footer" style="display: flex; gap: 10px;">
+        <button id="theme-toggle" class="settings-btn" title="Toggle Theme">
+            <img src="/static/image/icons/light.svg" alt="Toggle Theme" class="theme-icon">
+        </button>
         <a href="/settings" class="settings-btn {{ 'active' if active_path == '/settings' else '' }}">
-            <img src="/static/image/settings.svg" alt="Settings">
+            <img src="/static/image/icons/settings.svg" alt="Settings">
         </a>
     </div>
 </div>

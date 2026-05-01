@@ -3,20 +3,23 @@
 {% block content %}
 <main>
     <h1 class="greeting">Settings</h1>
-    
+
     <div class="forecast-card" style="max-width: 500px; margin-top: 40px;">
         <div class="forecast-header">
             <h2 class="forecast-title">Dashboard Configuration</h2>
         </div>
-        
-        <form action="{{ url_for('main.update_settings') }}" method="POST" style="display: flex; flex-direction: column; gap: 20px;">
+
+        <form action="{{ url_for('main.update_settings') }}" method="POST"
+            style="display: flex; flex-direction: column; gap: 20px;">
             <div style="display: flex; flex-direction: column; gap: 10px;">
-                <label for="interval" style="color: var(--text-secondary); font-size: 14px; letter-spacing: 1px;">Update Interval (seconds)</label>
-                <input type="number" id="interval" name="interval" value="{{ interval }}" min="1" max="60" 
+                <label for="interval" style="color: var(--text-secondary); font-size: 14px; letter-spacing: 1px;">Update
+                    Interval (seconds)</label>
+                <input type="number" id="interval" name="interval" value="{{ interval }}" min="1" max="60"
                     style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 15px; color: white; font-size: 18px; outline: none;">
             </div>
-            
-            <button type="submit" class="nav-link active" style="border: none; cursor: pointer; justify-content: center; font-size: 16px; font-weight: 500;">
+
+            <button type="submit" class="nav-link active"
+                style="border: none; cursor: pointer; justify-content: center; font-size: 16px; font-weight: 500;">
                 Save Changes
             </button>
         </form>

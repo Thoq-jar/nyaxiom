@@ -14,7 +14,7 @@
             {% set radius = 45 %}
             {% set circumference = 282.74 %}
             {% set offset = circumference - (circumference * percentage / 100) %}
-            <circle class="progress-value" cx="50" cy="50" r="45" 
+            <circle class="progress-value" cx="50" cy="50" r="45"
                 style="stroke-dasharray: {{ circumference }}; stroke-dashoffset: {{ offset }}; stroke: url(#{{ gradient_id }});">
             </circle>
             <circle class="progress-dot" cx="50" cy="50" r="3"

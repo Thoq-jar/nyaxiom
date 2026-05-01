@@ -1,0 +1,55 @@
+{% extends "base.jinja2" %}
+
+{% block content %}
+<main class="log-viewer">
+    <div class="log-header">
+        <h1 class="greeting">{{name}}</h1>
+        <div class="log-actions">
+            <span id="log-status" class="status-indicator"></span>
+            <button id="clear-logs" class="btn-secondary">Clear View</button>
+        </div>
+    </div>
+    <div id="log-container" class="log-content">
+        <div class="log-placeholder">Select a log file to view content...</div>
+    </div>
+</main>
+
+<aside class="right-panel log-controls">
+    <div class="control-group">
+        <label for="log-search">Search Logs</label>
+        <div class="search-wrapper">
+            <input type="text" id="log-search" placeholder="Filter lines..." autocomplete="off">
+            <div class="regex-toggle">
+                <input type="checkbox" id="use-regex">
+                <label for="use-regex">.*</label>
+            </div>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="group-header">
+            <label>Available Logs</label>
+            <button id="refresh-log-list" class="refresh-btn">
+                <svg viewBox="0 0 24 24" width="16" height="16">
+                    <path fill="currentColor"
+                        d="M17.65 6.35A7.958 7.958 0 0 0 12 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0 1 12 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
+                </svg>
+            </button>
+        </div>
+        <div id="log-list" class="log-selection-list">
+            <div class="loading-spinner">Loading logs...</div>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="checkbox-item">
+            <input type="checkbox" id="auto-scroll" checked>
+            <label for="auto-scroll">Auto-scroll to bottom</label>
+        </div>
+        <div class="checkbox-item">
+            <input type="checkbox" id="live-update" checked>
+            <label for="live-update">Live update</label>
+        </div>
+    </div>
+</aside>
+{% endblock %}
