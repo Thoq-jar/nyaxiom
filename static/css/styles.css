@@ -1,59 +1,59 @@
 :root {
-    --bg-main: #0f070b;
-    --bg-sidebar: #1d0d19;
-    --bg-card: #271321;
-    --text-primary: #f7c0f4;
-    --text-secondary: #867783;
-    --accent: oklch(75% 0.18 350);
+    --bg-main: #1f0b18;
+    --bg-sidebar: #2b0f21;
+    --bg-card: #3a152d;
+    --text-primary: #fce8f5;
+    --text-secondary: #c288b2;
+    --accent: oklch(70% 0.18 345);
     --sidebar-width: 250px;
     --right-panel-width: 350px;
-    --accent-gradient-start: oklch(90% 0.05 0);
-    --nav-active-bg: rgba(255, 255, 255, 0.05);
-    --btn-hover-bg: rgba(255, 255, 255, 0.05);
-    --btn-active-bg: rgba(255, 255, 255, 0.1);
-    --progress-bg: rgba(255, 255, 255, 0.04);
-    --progress-ticks: rgba(255, 255, 255, 0.1);
-    --border-light: rgba(255, 255, 255, 0.1);
-    --border-dim: rgba(255, 255, 255, 0.05);
-    --forecast-card-bg: rgba(255, 255, 255, 0.03);
-    --log-content-bg: #0a0a0a;
-    --log-text: #d1d1d1;
-    --log-line-hover: rgba(255, 255, 255, 0.03);
-    --log-line-match: rgba(oklch(75% 0.18 350), 0.1);
-    --search-wrapper-bg: rgba(255, 255, 255, 0.03);
-    --regex-toggle-bg: rgba(255, 255, 255, 0.05);
-    --log-list-bg: rgba(255, 255, 255, 0.02);
-    --checkbox-border: rgba(255, 255, 255, 0.2);
-    --checkbox-check: #111;
+    --accent-gradient-start: oklch(85% 0.10 345);
+    --nav-active-bg: rgba(255, 200, 235, 0.08);
+    --btn-hover-bg: rgba(255, 200, 235, 0.06);
+    --btn-active-bg: rgba(255, 200, 235, 0.12);
+    --progress-bg: rgba(255, 200, 235, 0.05);
+    --progress-ticks: rgba(255, 200, 235, 0.15);
+    --border-light: rgba(255, 200, 235, 0.12);
+    --border-dim: rgba(255, 200, 235, 0.06);
+    --forecast-card-bg: rgba(255, 200, 235, 0.04);
+    --log-content-bg: #160710;
+    --log-text: #e6ccd8;
+    --log-line-hover: rgba(255, 200, 235, 0.05);
+    --log-line-match: rgba(oklch(70% 0.18 345), 0.2);
+    --search-wrapper-bg: rgba(255, 200, 235, 0.04);
+    --regex-toggle-bg: rgba(255, 200, 235, 0.08);
+    --log-list-bg: rgba(255, 200, 235, 0.03);
+    --checkbox-border: rgba(255, 200, 235, 0.3);
+    --checkbox-check: #1f0b18;
 }
 
 :root.light {
-    --bg-main: #ddbbce;
-    --bg-sidebar: #cca9c4;
-    --bg-card: #b17ca0;
-    --text-primary: #090809;
-    --text-secondary: #1b161a;
-    --accent: oklch(75% 0.18 350);
+    --bg-main: #ffeaf5;
+    --bg-sidebar: #fad7eb;
+    --bg-card: #fff0f9;
+    --text-primary: #4a1936;
+    --text-secondary: #9c5c80;
+    --accent: oklch(60% 0.18 345);
     --sidebar-width: 250px;
     --right-panel-width: 350px;
-    --accent-gradient-start: oklch(70% 0.05 0);
-    --nav-active-bg: rgba(0, 0, 0, 0.05);
-    --btn-hover-bg: rgba(0, 0, 0, 0.05);
-    --btn-active-bg: rgba(0, 0, 0, 0.1);
-    --progress-bg: rgba(0, 0, 0, 0.04);
-    --progress-ticks: rgba(0, 0, 0, 0.1);
-    --border-light: rgba(0, 0, 0, 0.1);
-    --border-dim: rgba(0, 0, 0, 0.05);
-    --forecast-card-bg: rgba(0, 0, 0, 0.03);
-    --log-content-bg: #e8d5e0;
-    --log-text: #2a2028;
-    --log-line-hover: rgba(0, 0, 0, 0.03);
-    --log-line-match: rgba(oklch(75% 0.18 350), 0.2);
-    --search-wrapper-bg: rgba(0, 0, 0, 0.03);
-    --regex-toggle-bg: rgba(0, 0, 0, 0.05);
-    --log-list-bg: rgba(0, 0, 0, 0.02);
-    --checkbox-border: rgba(0, 0, 0, 0.2);
-    --checkbox-check: #eee;
+    --accent-gradient-start: oklch(75% 0.12 345);
+    --nav-active-bg: rgba(120, 30, 80, 0.06);
+    --btn-hover-bg: rgba(120, 30, 80, 0.05);
+    --btn-active-bg: rgba(120, 30, 80, 0.1);
+    --progress-bg: rgba(120, 30, 80, 0.05);
+    --progress-ticks: rgba(120, 30, 80, 0.12);
+    --border-light: rgba(120, 30, 80, 0.1);
+    --border-dim: rgba(120, 30, 80, 0.05);
+    --forecast-card-bg: #f5cce0;
+    --log-content-bg: #fffbfd;
+    --log-text: #4a1936;
+    --log-line-hover: rgba(120, 30, 80, 0.03);
+    --log-line-match: rgba(oklch(60% 0.18 345), 0.15);
+    --search-wrapper-bg: rgba(120, 30, 80, 0.03);
+    --regex-toggle-bg: rgba(120, 30, 80, 0.06);
+    --log-list-bg: rgba(120, 30, 80, 0.02);
+    --checkbox-border: rgba(120, 30, 80, 0.2);
+    --checkbox-check: #fff0f9;
 }
 
 ::view-transition-old(root),
@@ -141,6 +141,11 @@ body {
 .logo-img {
     width: 35px;
     height: 35px;
+    filter: brightness(0) saturate(100%) invert(85%) sepia(20%) saturate(300%) hue-rotate(290deg);
+}
+
+.light .logo-img {
+    filter: brightness(0) saturate(100%) invert(25%) sepia(30%) saturate(600%) hue-rotate(290deg);
 }
 
 .logo-text {
@@ -176,15 +181,31 @@ body {
 .nav-link img {
     width: 20px;
     height: 20px;
-    filter: brightness(0) invert(0.6);
+    filter: brightness(0) saturate(100%) invert(65%) sepia(20%) saturate(300%) hue-rotate(290deg);
+    transition: filter 0.2s;
+}
+
+.light .nav-link img {
+    filter: brightness(0) saturate(100%) invert(35%) sepia(20%) saturate(500%) hue-rotate(290deg);
+    opacity: 0.8;
 }
 
 .nav-link.active img {
-    filter: brightness(0) invert(1);
+    filter: brightness(0) saturate(100%) invert(95%) sepia(20%) saturate(300%) hue-rotate(290deg);
+}
+
+.light .nav-link.active img {
+    filter: brightness(0) saturate(100%) invert(20%) sepia(30%) saturate(600%) hue-rotate(290deg);
+    opacity: 1;
 }
 
 .nav-link:hover img {
-    filter: brightness(0) invert(0.8);
+    filter: brightness(0) saturate(100%) invert(85%) sepia(20%) saturate(300%) hue-rotate(290deg);
+}
+
+.light .nav-link:hover img {
+    filter: brightness(0) saturate(100%) invert(25%) sepia(30%) saturate(600%) hue-rotate(290deg);
+    opacity: 0.9;
 }
 
 .sidebar-footer {
@@ -220,13 +241,13 @@ body {
 .settings-btn .theme-icon {
     width: 24px;
     height: 24px;
-    filter: brightness(0) invert(0.6);
+    filter: brightness(0) saturate(100%) invert(65%) sepia(20%) saturate(300%) hue-rotate(290deg);
     transition: filter 0.2s, transform 0.3s;
 }
 
 .settings-btn:hover img,
 .settings-btn:hover .theme-icon {
-    filter: brightness(0) invert(1);
+    filter: brightness(0) saturate(100%) invert(95%) sepia(20%) saturate(300%) hue-rotate(290deg);
 }
 
 a.settings-btn:hover img {
@@ -235,12 +256,13 @@ a.settings-btn:hover img {
 
 .light .settings-btn img,
 .light .settings-btn .theme-icon {
-    filter: brightness(0) invert(0);
-    opacity: 0.6;
+    filter: brightness(0) saturate(100%) invert(35%) sepia(20%) saturate(500%) hue-rotate(290deg);
+    opacity: 0.8;
 }
 
 .light .settings-btn:hover img,
 .light .settings-btn:hover .theme-icon {
+    filter: brightness(0) saturate(100%) invert(20%) sepia(30%) saturate(600%) hue-rotate(290deg);
     opacity: 1;
 }
 
@@ -307,13 +329,22 @@ main {
 }
 
 .interval-setting {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: var(--btn-hover-bg);
+    border: 1px solid var(--border-light);
     border-radius: 12px;
     padding: 15px;
-    color: white;
+    color: var(--text-primary);
     font-size: 18px;
     outline: none;
+    transition: border-color 0.2s;
+}
+
+.interval-setting:focus {
+    border-color: var(--accent);
+}
+
+.light .interval-setting {
+    background: var(--bg-card);
 }
 
 .settings-submit-button {
@@ -737,6 +768,6 @@ main {
 }
 
 .astolfo {
-    padding: 0 10px;
+    padding-left: 13px;
 
 }
