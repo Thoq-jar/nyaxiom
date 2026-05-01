@@ -12,6 +12,13 @@ async def get_cpu_usage():
     return {"usage": await get_cpu_usage()}
 
 
+@api_bp.get("/hardware/cpu/core_usage")
+async def get_core_cpu_usage():
+    from src.utils.hardware.cpu import get_by_core_cpu_usage
+
+    return await get_by_core_cpu_usage()
+
+
 @api_bp.get("/hardware/ram/usage")
 async def get_ram_usage():
     from src.utils.hardware.ram import get_ram_usage

@@ -15,7 +15,7 @@
     --progress-ticks: rgba(255, 200, 235, 0.15);
     --border-light: rgba(255, 200, 235, 0.12);
     --border-dim: rgba(255, 200, 235, 0.06);
-    --forecast-card-bg: rgba(255, 200, 235, 0.04);
+    --card-bg: rgba(255, 200, 235, 0.04);
     --log-content-bg: #160710;
     --log-text: #e6ccd8;
     --log-line-hover: rgba(255, 200, 235, 0.05);
@@ -36,7 +36,6 @@
     --accent: oklch(60% 0.18 345);
     --sidebar-width: 250px;
     --right-panel-width: 350px;
-    --accent-gradient-start: oklch(75% 0.12 345);
     --nav-active-bg: rgba(120, 30, 80, 0.06);
     --btn-hover-bg: rgba(120, 30, 80, 0.05);
     --btn-active-bg: rgba(120, 30, 80, 0.1);
@@ -44,7 +43,7 @@
     --progress-ticks: rgba(120, 30, 80, 0.12);
     --border-light: rgba(120, 30, 80, 0.1);
     --border-dim: rgba(120, 30, 80, 0.05);
-    --forecast-card-bg: #f5cce0;
+    --card-bg: #f5cce0;
     --log-content-bg: #fffbfd;
     --log-text: #4a1936;
     --log-line-hover: rgba(120, 30, 80, 0.03);
@@ -72,11 +71,11 @@
 }
 
 :root.light::view-transition-new(root) {
-    animation: diagonal-sweep-light 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+    animation: diagonal-sweep-light 2s cubic-bezier(0.01, 0, 0.65, 1) both;
 }
 
 :root:not(.light)::view-transition-new(root) {
-    animation: diagonal-sweep-dark 0.7s cubic-bezier(0.4, 0, 0.2, 1) both;
+    animation: diagonal-sweep-dark 2s cubic-bezier(0.01, 0, 0.65, 1) both;
 }
 
 @keyframes diagonal-sweep-light {
@@ -287,6 +286,7 @@ main {
 
 .stats-grid {
     display: flex;
+    flex-wrap: wrap;
     gap: 20px;
     margin-bottom: 60px;
     justify-content: flex-start;
@@ -449,20 +449,20 @@ main {
     font-weight: 400;
 }
 
-.forecast-card {
-    background-color: var(--forecast-card-bg);
+.card {
+    background-color: var(--card-bg);
     border-radius: 40px;
     padding: 35px 30px;
     width: 100%;
     overflow: hidden;
 }
 
-.forecast-header {
+.card-header {
     text-align: center;
     margin-bottom: 35px;
 }
 
-.forecast-title {
+.card-title {
     font-size: 32px;
     font-weight: 300;
 }

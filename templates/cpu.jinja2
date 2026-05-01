@@ -2,7 +2,7 @@
 
 {% block content %}
 <main>
-    <h1 class="greeting">{{ greeting }}, User!</h1>
+    <h1 class="greeting">{{ title }}</h1>
 
     <div class="stats-grid">
         {% for stat in stats %}
@@ -13,5 +13,4 @@
     </div>
 </main>
 
-{% include 'partials/_weather_panel.jinja2' %}
 {% endblock %}

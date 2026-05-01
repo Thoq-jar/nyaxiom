@@ -16,8 +16,8 @@ main_bp = Blueprint("main", __name__)
 
 NAV_ITEMS = [
     {"name": "Home", "url": "/", "icon": "/static/image/icons/home.svg"},
+    {"name": "CPU", "url": "/cpu", "icon": "/static/image/icons/cpu.svg"},
     {"name": "Logs", "url": "/logs", "icon": "/static/image/icons/browse.svg"},
-    {"name": "Item3", "url": "#", "icon": None},
     {"name": "Item4", "url": "#", "icon": None},
 ]
 
@@ -54,6 +54,7 @@ async def index():
         current_temp=weather["temp"],
         current_icon=weather["icon_url"],
         forecast=weather["forecast"],
+        stats=[{"title": "CPU", "percentage": 0}, {"title": "RAM", "percentage": 0}],
         today_date=today_date,
     )
 
@@ -71,6 +72,23 @@ async def settings():
 @main_bp.get("/logs")
 async def logs():
     return await render_template("logs.jinja2", title="Logs")
+
+
+@main_bp.get("/cpu")
+async def cpu():
+    from src.utils.hardware.cpu import get_by_core_cpu_usage
+
+    cores = await get_by_core_cpu_usage()
+    stats = []
+    for core_dict in cores:
+        for core_id, usage in core_dict.items():
+            stats.append({"title": f"Core {core_id}", "percentage": usage})
+
+    return await render_template(
+        "cpu.jinja2",
+        title="CPU",
+        stats=stats,
+    )
 
 
 @main_bp.post("/settings")
