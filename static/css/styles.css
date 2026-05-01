@@ -83,6 +83,7 @@
     from {
         clip-path: polygon(100% 100%, 100% 100%, 100% 100%);
     }
+
     to {
         clip-path: polygon(100% 100%, -200% 100%, 100% -200%);
     }
@@ -92,6 +93,7 @@
     from {
         clip-path: polygon(0 0, 0 0, 0 0);
     }
+
     to {
         clip-path: polygon(0 0, 300% 0, 0 300%);
     }
@@ -188,6 +190,8 @@ body {
 .sidebar-footer {
     margin-top: auto;
     padding: 0 10px;
+    display: flex;
+    gap: 10px;
 }
 
 .settings-btn {
@@ -212,14 +216,16 @@ body {
     background-color: var(--btn-active-bg);
 }
 
-.settings-btn img, .settings-btn .theme-icon {
+.settings-btn img,
+.settings-btn .theme-icon {
     width: 24px;
     height: 24px;
     filter: brightness(0) invert(0.6);
     transition: filter 0.2s, transform 0.3s;
 }
 
-.settings-btn:hover img, .settings-btn:hover .theme-icon {
+.settings-btn:hover img,
+.settings-btn:hover .theme-icon {
     filter: brightness(0) invert(1);
 }
 
@@ -227,12 +233,14 @@ a.settings-btn:hover img {
     transform: rotate(45deg);
 }
 
-.light .settings-btn img, .light .settings-btn .theme-icon {
+.light .settings-btn img,
+.light .settings-btn .theme-icon {
     filter: brightness(0) invert(0);
     opacity: 0.6;
 }
 
-.light .settings-btn:hover img, .light .settings-btn:hover .theme-icon {
+.light .settings-btn:hover img,
+.light .settings-btn:hover .theme-icon {
     opacity: 1;
 }
 
@@ -278,6 +286,42 @@ main {
     color: var(--text-secondary);
     letter-spacing: 1.5px;
     margin-bottom: 25px;
+}
+
+.settings-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.input-area {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.settings-input-label {
+    color: var(--text-secondary);
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+.interval-setting {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    color: white;
+    font-size: 18px;
+    outline: none;
+}
+
+.settings-submit-button {
+    border: none;
+    cursor: pointer;
+    justify-content: center;
+    font-size: 16px;
+    font-weight: 500;
 }
 
 .progress-circle {
@@ -690,4 +734,9 @@ main {
     text-align: center;
     font-size: 13px;
     color: var(--text-secondary);
+}
+
+.astolfo {
+    padding: 0 10px;
+
 }
