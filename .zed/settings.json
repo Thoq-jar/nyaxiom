@@ -1,0 +1,8 @@
+{
+  "languages": {
+    "Python": {
+      "language_servers": ["ty", "ruff"],
+    },
+  },
+  "file_scan_exclusions": ["__pycache__/", "__init__.py", ".ruff_cache"],
+}

@@ -11,3 +11,9 @@ dependencies = [
     "quart-flask-patch>=0.3.0",
     "uvicorn>=0.46.0",
 ]
+
+[dependency-groups]
+dev = [
+    "ruff>=0.15.12",
+    "ty>=0.0.33",
+]

@@ -1,24 +1,26 @@
+import os
+from datetime import datetime
+
 from quart import (
     Blueprint,
+    redirect,
     render_template,
     request,
     send_from_directory,
-    redirect,
     url_for,
 )
-from datetime import datetime
-import os
-from src.features.weather import get_weather_data
-from src.db.model import FetchTask
+
 from src.db.db import db
+from src.db.model import FetchTask
+from src.features.weather import get_weather_data
 
 main_bp = Blueprint("main", __name__)
 
 NAV_ITEMS = [
     {"name": "Home", "url": "/", "icon": "/static/image/icons/home.svg"},
     {"name": "CPU", "url": "/cpu", "icon": "/static/image/icons/cpu.svg"},
+    {"name": "Memory", "url": "/memory", "icon": "/static/image/icons/memory.svg"},
     {"name": "Logs", "url": "/logs", "icon": "/static/image/icons/browse.svg"},
-    {"name": "Item4", "url": "#", "icon": None},
 ]
 
 
@@ -88,6 +90,18 @@ async def cpu():
         "cpu.jinja2",
         title="CPU",
         stats=stats,
+    )
+
+
+@main_bp.get("/memory")
+async def memory():
+    return await render_template(
+        "memory.jinja2",
+        title="Memory",
+        stats=[
+            {"title": "Free", "percentage": 0},
+            {"title": "Used", "percentage": 0},
+        ],
     )
 
 

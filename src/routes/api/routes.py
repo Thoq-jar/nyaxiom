@@ -1,6 +1,9 @@
 from pathlib import Path
+
 from quart import Blueprint
-from src.features.logs import read_log_dirs, read_log
+
+from src.features.logs import read_log, read_log_dirs
+from src.utils.misc.units import GIGABYTE
 
 api_bp = Blueprint("api", __name__)
 
@@ -23,11 +26,31 @@ async def get_core_cpu_usage():
 async def get_ram_usage():
     from src.utils.hardware.ram import get_ram_usage
 
-    total = 16 * 1024 * 1024 * 1024
+    total = 16 * GIGABYTE
     used = await get_ram_usage()
     percentage = (used / total) * 100
 
     return {"usage": round(percentage, 1)}
+
+
+@api_bp.get("/hardware/ram/free")
+async def get_free_ram():
+    from src.utils.hardware.ram import get_free_memory
+
+    free = await get_free_memory()
+    return {"free": free}
+
+
+@api_bp.get("/hardware/ram/free_used")
+async def get_free_used_ram():
+    from src.utils.hardware.ram import get_free_memory, get_ram_usage, get_total_memory
+
+    total = await get_total_memory() * GIGABYTE
+    free = await get_free_memory() * GIGABYTE
+    used = await get_ram_usage() * GIGABYTE
+    percentage_used = (used / total) * 100
+    percentage_free = (free / total) * 100
+    return {"free": percentage_free, "used": percentage_used}
 
 
 @api_bp.get("/os/logs/retrieve")
