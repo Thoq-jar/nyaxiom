@@ -2,8 +2,9 @@
 
 import getpass
 import gzip
-from src.utils.misc.dirutil import read_dir_if_exists
 from pathlib import Path
+
+from src.utils.misc.dirutil import read_dir_if_exists
 
 
 def read_log(path: Path) -> str:
@@ -27,12 +28,7 @@ def read_log(path: Path) -> str:
 def read_log_dirs():
     username: str = getpass.getuser()
     linux_paths: list[Path] = [
-        Path("/var/log/syslog"),
-        Path("/var/log/messages"),
-        Path("/var/log/auth.log"),
-        Path("/var/log/secure"),
-        Path("/var/log/kern.log"),
-        Path("/var/log/cron"),
+        Path("/var/log/"),
     ]
     macos_dirs: list[Path] = [
         Path(f"/Users/{username}/Library/Logs"),
@@ -43,8 +39,11 @@ def read_log_dirs():
     logs: list[Path] = []
 
     for path in linux_paths:
-        if path.exists() and path.is_file():
-            logs.append(path)
+        files: list[Path] = read_dir_if_exists(path)
+
+        for file_path in files:
+            if file_path.exists() and file_path.is_file():
+                logs.append(file_path)
 
     for directory in macos_dirs:
         files: list[Path] = read_dir_if_exists(directory)

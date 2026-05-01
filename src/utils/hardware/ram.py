@@ -1,5 +1,7 @@
 import subprocess
 
+from src.utils.misc.units import GIGABYTE
+
 
 def linux_total_memory() -> int:
     linux_total_memory_command = "free -b | grep Mem | awk '{print $2}'"
@@ -90,3 +92,18 @@ async def get_free_memory() -> int:
     used_memory = await get_ram_usage()
     free_memory = total_memory - used_memory
     return free_memory
+
+
+async def get_percentage_used() -> float:
+    total = await get_total_memory() * GIGABYTE
+    used = await get_ram_usage() * GIGABYTE
+    percentage_used = (used / total) * 100
+
+    return percentage_used
+
+
+async def get_percent_free() -> float:
+    total = await get_total_memory() * GIGABYTE
+    free = await get_free_memory() * GIGABYTE
+    percentage_free = (free / total) * 100
+    return percentage_free

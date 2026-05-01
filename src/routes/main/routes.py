@@ -37,6 +37,9 @@ def inject_globals():
 
 @main_bp.get("/")
 async def index():
+    from src.utils.hardware.cpu import get_cpu_usage
+    from src.utils.hardware.ram import get_percentage_used
+
     hour = datetime.now().hour
     if hour < 12:
         greeting = "Good morning"
@@ -56,7 +59,10 @@ async def index():
         current_temp=weather["temp"],
         current_icon=weather["icon_url"],
         forecast=weather["forecast"],
-        stats=[{"title": "CPU", "percentage": 0}, {"title": "RAM", "percentage": 0}],
+        stats=[
+            {"title": "CPU", "percentage": round(await get_cpu_usage())},
+            {"title": "RAM", "percentage": round(await get_percentage_used())},
+        ],
         today_date=today_date,
     )
 
@@ -84,6 +90,7 @@ async def cpu():
     stats = []
     for core_dict in cores:
         for core_id, usage in core_dict.items():
+            usage = round(usage)
             stats.append({"title": f"Core {core_id}", "percentage": usage})
 
     return await render_template(
@@ -95,12 +102,14 @@ async def cpu():
 
 @main_bp.get("/memory")
 async def memory():
+    from src.utils.hardware.ram import get_percent_free, get_percentage_used
+
     return await render_template(
         "memory.jinja2",
         title="Memory",
         stats=[
-            {"title": "Free", "percentage": 0},
-            {"title": "Used", "percentage": 0},
+            {"title": "Free", "percentage": round(await get_percent_free())},
+            {"title": "Used", "percentage": round(await get_percentage_used())},
         ],
     )
 

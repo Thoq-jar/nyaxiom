@@ -1,5 +1,6 @@
 import subprocess
 import time
+
 import src.utils.misc.nyaplatform as nyaplatform
 
 
@@ -133,7 +134,6 @@ async def get_by_core_cpu_usage() -> list[dict[str, float]]:
             return macos_cpu_per_core()
         case nyaplatform.Platform.WINDOWS:
             return windows_cpu_per_core()
-    return []
 
 
 def linux_cpu() -> float:
@@ -179,4 +179,3 @@ async def get_cpu_usage() -> float:
             return macos_cpu()
         case nyaplatform.Platform.WINDOWS:
             return windows_cpu()
-    return 0.0
