@@ -1,35 +1,55 @@
 {% extends "base.jinja2" %}
 
 {% block content %}
-<main>
+<main class="settings">
     <h1 class="greeting">Settings</h1>
 
-    <div class="card">
-        <div class="card-header">
-            <h2 class="title">Dashboard Configuration</h2>
-        </div>
-
-        <form action="{{ url_for('api.update_settings') }}" method="POST" class="settings-form">
+    <div class="card settings-container">
+         <form action="{{ url_for('api.update_settings') }}" method="POST" class="settings-form">
             <div class="input-area">
-                <label for="interval" class="settings-input-label">Update
-                    Interval (seconds)</label>
-                <input type="number" id="interval" name="interval" value="{{ interval }}" min="1" max="60"
+                <div class="input-area-label">
+                    <label for="interval" class="settings-input-label"></label>
+                    <h1 class="settings-title">Update Interval</h1>
+                    <p class="settings-description">The interval at which to update the statistics.</p>
+                </div>
+                <div class="input-area-data">
+                    <input type="number" id="interval" name="interval" value="{{ interval }}" min="1" max="60"
                     class="interval-setting">
+                </div>
             </div>
 
-            <div class="input-area">
-                <label for="weather" class="settings-input-label">Show Weather (IP-based)</label>
-                <label class="switch">
-                  <input id="weather" name="weather" type="checkbox">
-                  <span class="slider"></span>
-                </label>
-            </div>
+            <hr/>
 
             <div class="input-area">
-                <label for="search-engine" class="settings-input-label">Search Engine (put %s for query)</label>
-                <input type="text" id="search-engine" name="search-engine" value="{{ search_engine }}"
-                    class="search-engine-setting">
+                <div class="input-area-label">
+                    <label for="weather" class="settings-input-label"></label>
+                    <h1 class="settings-title">Show Weather</h1>
+                    <p class="settings-description">Show the weather. Based on your IP address.</p>
+                </div>
+
+                <div class="input-area-data">
+                    <label class="switch">
+                        <input id="weather" name="weather" type="checkbox">
+                        <span class="slider"></span>
+                    </label>
+                </div>
             </div>
+
+            <hr/>
+
+            <div class="input-area">
+                <div class="input-area-label">
+                    <label for="search-engine" class="settings-input-label"></label>
+                    <h1 class="settings-title">Search Engine</h1>
+                    <p class="settings-description">The search engine to use for queries. Use %s to insert the query.</p>
+                </div>
+                <div class="input-area-data">
+                    <input type="text" id="search-engine" class="search-engine-setting" name="search-engine" value="{{ search_engine }}"
+                        class="search-engine-setting">
+                </div>
+            </div>
+
+            <hr/>
 
             <button class="settings-submit-button nav-link active" type="submit">
                 Save Changes

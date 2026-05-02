@@ -342,8 +342,31 @@ main {
 
 .input-area {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
     gap: 10px;
+}
+
+.settings-title {
+    font-size: 20px;
+    color: var(--accent);
+}
+
+.settings-description {
+    font-size: 14px;
+    color: var(--text-secondary);
+    letter-spacing: 1px;
+}
+
+.input-area-label {
+    text-align: left;
+}
+
+.input-area-data {
+    text-align: right;
+    width: 50%;
+    min-width: 50%;
 }
 
 .settings-input-label {
@@ -359,8 +382,13 @@ main {
     padding: 15px;
     color: var(--text-primary);
     font-size: 18px;
+    min-width: 30%;
     outline: none;
     transition: border-color 0.2s;
+}
+
+.search-engine-setting {
+    min-width: 70%;
 }
 
 .interval-setting:focus {
@@ -915,4 +943,32 @@ input[type="text"]:focus {
 
 .search-bar:focus {
     min-width: 35vw;
+}
+
+.settings {
+    max-width: 80vw;
+}
+
+.settings-container {
+    background-color: transparent;
+}
+
+input[type="number"] {
+    appearance: textfield;
+    -moz-appearance: textfield;
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+hr {
+    display: block;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    border-style: inset;
+    border-width: 1px;
+    border-radius: 10px;
+    color: var(--checkbox-border);
 }
