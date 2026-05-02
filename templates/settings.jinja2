@@ -9,7 +9,7 @@
             <h2 class="title">Dashboard Configuration</h2>
         </div>
 
-        <form action="{{ url_for('main.update_settings') }}" method="POST" class="settings-form">
+        <form action="{{ url_for('api.update_settings') }}" method="POST" class="settings-form">
             <div class="input-area">
                 <label for="interval" class="settings-input-label">Update
                     Interval (seconds)</label>
@@ -37,6 +37,7 @@
         </form>
     </div>
 </main>
+
 <script>
     const True = true;
     const False = false;

@@ -1,7 +1,9 @@
 from pathlib import Path
 
-from quart import Blueprint
+from quart import Blueprint, redirect, request, url_for
 
+from src.db.db import db
+from src.db.model import FetchTask, SearchEngine, ShowWeather
 from src.features.logs import read_log, read_log_dirs
 from src.utils.misc.units import GIGABYTE
 
@@ -72,3 +74,30 @@ async def retrieve_logs():
         )
 
     return log_data
+
+
+@api_bp.post("/settings")
+async def update_settings():
+    form = await request.form
+    interval = form.get("interval", type=int)
+    if interval:
+        task = FetchTask.query.filter_by(task_name="dashboard").first()
+        if task:
+            task.update_interval = interval
+            db.session.commit()
+
+    show_weather = form.get("weather") == "on"
+    if show_weather is not None:
+        task = ShowWeather.query.filter_by(task_name="dashboard").first()
+        if task:
+            task.checked = show_weather
+            db.session.commit()
+
+    search_engine = form.get("search-engine")
+    if search_engine:
+        task = SearchEngine.query.filter_by(task_name="dashboard").first()
+        if task:
+            task.engine = search_engine
+            db.session.commit()
+
+    return redirect(url_for("main.settings"))
