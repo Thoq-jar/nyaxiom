@@ -19,21 +19,28 @@ logger.addHandler(handler)
 
 async def run_db_init(app):
     async with app.app_context():
-        from src.db.model import FetchTask, ShowWeather
+        from src.db.model import FetchTask, SearchEngine, ShowWeather
 
         logger.debug("Initializing DB...")
         db.create_all()
         fetch_task = FetchTask.query.filter_by(task_name="dashboard").first()
         if not fetch_task:
             logger.debug("not fetch_task")
-            db.session.add(FetchTask(task_name="dashboard", update_interval=3))
+            db.session.add(FetchTask(task_name="dashboard"))
             db.session.commit()
 
         show_weather = ShowWeather.query.filter_by(task_name="dashboard").first()
         if not show_weather:
             logger.debug("not show_weather")
-            db.session.add(ShowWeather(task_name="dashboard", checked=True))
+            db.session.add(ShowWeather(task_name="dashboard"))
             db.session.commit()
+
+        search_engine = SearchEngine.query.filter_by(task_name="dashboard").first()
+        if not search_engine:
+            logger.debug("not search_engine")
+            db.session.add(SearchEngine(task_name="dashboard"))
+            db.session.commit()
+
         logger.info("DB initialized")
 
 

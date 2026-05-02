@@ -893,3 +893,26 @@ input:checked + .slider:before {
     background: var(--accent);
     color: var(--text-primary);
 }
+
+input[type="text"] {
+    padding: 10px 5px;
+    background: var(--bg-card);
+    border: 3px solid transparent;
+    border-radius: 10px;
+    outline: none;
+    color: var(--text-primary);
+}
+
+input[type="text"]:focus {
+    border: 3px solid var(--accent);
+}
+
+.search-bar {
+    margin-bottom: 35px;
+    min-width: 22vw;
+    transition: min-width 0.3s;
+}
+
+.search-bar:focus {
+    min-width: 35vw;
+}

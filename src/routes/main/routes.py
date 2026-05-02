@@ -1,7 +1,6 @@
 import os
 from datetime import datetime
 
-import uvicorn.protocols.http.flow_control
 from quart import (
     Blueprint,
     redirect,
@@ -12,7 +11,7 @@ from quart import (
 )
 
 from src.db.db import db
-from src.db.model import FetchTask, ShowWeather
+from src.db.model import FetchTask, SearchEngine, ShowWeather
 from src.features.weather import get_weather_data
 
 main_bp = Blueprint("main", __name__)
@@ -44,6 +43,11 @@ async def index():
     show_weather = (
         ShowWeather.query.filter_by(task_name="dashboard").first().checked or False
     )
+    search_engine = (
+        SearchEngine.query.filter_by(task_name="dashboard")
+        .first()
+        .engine.replace("%s", "")
+    )
 
     hour = datetime.now().hour
     if hour < 12:
@@ -69,6 +73,7 @@ async def index():
             current_icon=weather["icon_url"],
             forecast=weather["forecast"],
             show_weather=show_weather,
+            engine=search_engine,
             stats=[
                 {"title": "CPU", "percentage": round(await get_cpu_usage())},
                 {"title": "RAM", "percentage": round(await get_percentage_used())},
@@ -85,6 +90,7 @@ async def index():
         current_icon="Weather disabled",
         forecast="Weather disabled",
         show_weather=show_weather,
+        engine=search_engine,
         stats=[
             {"title": "CPU", "percentage": round(await get_cpu_usage())},
             {"title": "RAM", "percentage": round(await get_percentage_used())},
@@ -97,11 +103,13 @@ async def index():
 async def settings():
     fetch_task = FetchTask.query.filter_by(task_name="dashboard").first()
     show_weather = ShowWeather.query.filter_by(task_name="dashboard").first()
+    search_engine = SearchEngine.query.filter_by(task_name="dashboard").first()
     return await render_template(
         "settings.jinja2",
         title="Settings",
         interval=fetch_task.update_interval if fetch_task else 3,
         weather=show_weather.checked if show_weather else True,
+        search_engine=search_engine.engine if search_engine else None,
     )
 
 
@@ -157,6 +165,13 @@ async def update_settings():
         task = ShowWeather.query.filter_by(task_name="dashboard").first()
         if task:
             task.checked = show_weather
+            db.session.commit()
+
+    search_engine = form.get("search-engine")
+    if search_engine:
+        task = SearchEngine.query.filter_by(task_name="dashboard").first()
+        if task:
+            task.engine = search_engine
             db.session.commit()
 
     return redirect(url_for("main.settings"))

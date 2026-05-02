@@ -4,6 +4,8 @@
 <main>
     <h1 class="greeting">{{ greeting }}!</h1>
 
+    {% include 'partials/_search.jinja2' %}
+
     <div class="stats-grid">
         {% for stat in stats %}
         {% set title = stat.title %}

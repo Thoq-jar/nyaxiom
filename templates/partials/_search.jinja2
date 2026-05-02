@@ -1,0 +1,16 @@
+<div class="search">
+    <form id="search-form">
+        <input class="search-bar" type="text" id="search" name="search" placeholder="Search the web...">
+    </form>
+</div>
+
+<script>
+  document.getElementById("search-form").addEventListener("submit", (event) => {
+      event.preventDefault();
+      const value = document.getElementById("search").value;
+      const engine = "{{ engine }}";
+      if(value) {
+        window.open(`${engine}${encodeURIComponent(value)}`, "_blank");
+      }
+  });
+</script>
