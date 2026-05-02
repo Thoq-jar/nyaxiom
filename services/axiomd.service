@@ -1,0 +1,14 @@
+[Unit]
+Description=Axiom Daemon
+After=network.target
+
+[Service]
+Type=simple
+User=axiom
+Group=axiom
+WorkingDirectory=/home/axiom
+ExecStart=/home/axiom/bin/axiomd start
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,13 @@
+#!/bin/bash
+
+SCRIPT_DIR="$(dirname "$0")/.."
+
+case "$1" in
+    start)
+        $SCRIPT_DIR/.venv/bin/python run.py
+        ;;
+    *)
+        echo "Usage: $0 {start}"
+        exit 1
+        ;;
+esac
