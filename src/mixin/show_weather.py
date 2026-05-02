@@ -3,18 +3,18 @@ from sqlalchemy.ext.declarative import declared_attr
 from src.db.db import db
 
 
-class ConfigurableIntervalMixin:
+class ShowWeatherMixin:
     @declared_attr
-    def update_interval(cls):
+    def checked(cls):
         return db.Column(
             db.Integer,
-            default=2,
+            default=True,
             nullable=False,
-            info={"label": "Update Interval (seconds)"},
+            info={"label": "Show Weather (IP-Based)"},
         )
 
     def is_due(self, last_updated):
         from datetime import datetime, timezone
 
         delta = (datetime.now(timezone.utc) - last_updated).total_seconds()
-        return delta >= self.update_interval
+        return delta >= self.checked

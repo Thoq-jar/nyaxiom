@@ -4,10 +4,9 @@
 <main>
     <h1 class="greeting">Settings</h1>
 
-    <!-- todo: generalize usage of cards (dont use forcast card) -->
-    <div class="forecast-card">
-        <div class="forecast-header">
-            <h2 class="forecast-title">Dashboard Configuration</h2>
+    <div class="card">
+        <div class="card-header">
+            <h2 class="title">Dashboard Configuration</h2>
         </div>
 
         <form action="{{ url_for('main.update_settings') }}" method="POST" class="settings-form">
@@ -18,10 +17,24 @@
                     class="interval-setting">
             </div>
 
+            <div class="input-area">
+                <label for="weather" class="settings-input-label">Show Weather (IP-based)</label>
+                <label class="switch">
+                  <input id="weather" name="weather" type="checkbox">
+                  <span class="slider"></span>
+                </label>
+            </div>
+
             <button class="settings-submit-button nav-link active" type="submit">
                 Save Changes
             </button>
         </form>
     </div>
 </main>
+<script>
+    const True = true;
+    const False = false;
+    const weatherCheckbox = document.getElementById("weather");
+    weatherCheckbox.checked = {{ weather }};
+</script>
 {% endblock %}

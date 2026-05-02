@@ -1,6 +1,7 @@
 import os
 from datetime import datetime
 
+import uvicorn.protocols.http.flow_control
 from quart import (
     Blueprint,
     redirect,
@@ -11,7 +12,7 @@ from quart import (
 )
 
 from src.db.db import db
-from src.db.model import FetchTask
+from src.db.model import FetchTask, ShowWeather
 from src.features.weather import get_weather_data
 
 main_bp = Blueprint("main", __name__)
@@ -40,6 +41,10 @@ async def index():
     from src.utils.hardware.cpu import get_cpu_usage
     from src.utils.hardware.ram import get_percentage_used
 
+    show_weather = (
+        ShowWeather.query.filter_by(task_name="dashboard").first().checked or False
+    )
+
     hour = datetime.now().hour
     if hour < 12:
         greeting = "Good morning"
@@ -48,17 +53,38 @@ async def index():
     else:
         greeting = "Good evening"
 
-    weather = await get_weather_data()
+    weather = {}
+    if show_weather:
+        weather = await get_weather_data()
+
     today_date = datetime.now().strftime("%b %d")
+
+    if show_weather:
+        return await render_template(
+            "home.jinja2",
+            title="Home",
+            greeting=greeting,
+            location=weather["location"],
+            current_temp=weather["temp"],
+            current_icon=weather["icon_url"],
+            forecast=weather["forecast"],
+            show_weather=show_weather,
+            stats=[
+                {"title": "CPU", "percentage": round(await get_cpu_usage())},
+                {"title": "RAM", "percentage": round(await get_percentage_used())},
+            ],
+            today_date=today_date,
+        )
 
     return await render_template(
         "home.jinja2",
         title="Home",
         greeting=greeting,
-        location=weather["location"],
-        current_temp=weather["temp"],
-        current_icon=weather["icon_url"],
-        forecast=weather["forecast"],
+        location="Weather disabled",
+        current_temp="Weather disabled",
+        current_icon="Weather disabled",
+        forecast="Weather disabled",
+        show_weather=show_weather,
         stats=[
             {"title": "CPU", "percentage": round(await get_cpu_usage())},
             {"title": "RAM", "percentage": round(await get_percentage_used())},
@@ -69,11 +95,13 @@ async def index():
 
 @main_bp.get("/settings")
 async def settings():
-    task = FetchTask.query.filter_by(task_name="dashboard").first()
+    fetch_task = FetchTask.query.filter_by(task_name="dashboard").first()
+    show_weather = ShowWeather.query.filter_by(task_name="dashboard").first()
     return await render_template(
         "settings.jinja2",
         title="Settings",
-        interval=task.update_interval if task else 3,
+        interval=fetch_task.update_interval if fetch_task else 3,
+        weather=show_weather.checked if show_weather else True,
     )
 
 
@@ -123,6 +151,14 @@ async def update_settings():
         if task:
             task.update_interval = interval
             db.session.commit()
+
+    show_weather = form.get("weather") == "on"
+    if show_weather is not None:
+        task = ShowWeather.query.filter_by(task_name="dashboard").first()
+        if task:
+            task.checked = show_weather
+            db.session.commit()
+
     return redirect(url_for("main.settings"))
 
 
