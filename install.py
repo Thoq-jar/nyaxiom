@@ -38,6 +38,9 @@ def get_os_release() -> str:
     with open(release, "r") as file:
         content = file.read()
         id_like = parse_os_release(content, "ID_LIKE")
+        if id_like == "":
+            return parse_os_release(content, "ID").strip()
+
         return id_like.strip()
 
 
@@ -45,7 +48,9 @@ def check_os() -> None:
     operating_system = get_os_release()
     print(f"Detected OS: {operating_system}")
     if operating_system != "arch":
-        print("Unsupported OS: only Arch Linux is supported at the moment, Debian is .")
+        print(
+            "Unsupported OS: only Arch Linux is supported at the moment, Debian is planned."
+        )
         exit(1)
     else:
         print("     > OS is supported")
