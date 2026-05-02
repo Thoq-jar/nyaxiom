@@ -60,32 +60,26 @@ async def index():
 
     today_date = datetime.now().strftime("%b %d")
 
-    if show_weather:
-        return await render_template(
-            "home.jinja2",
-            title="Home",
-            greeting=greeting,
-            location=weather["location"],
-            current_temp=weather["temp"],
-            current_icon=weather["icon_url"],
-            forecast=weather["forecast"],
-            show_weather=show_weather,
-            engine=search_engine,
-            stats=[
-                {"title": "CPU", "percentage": round(await get_cpu_usage())},
-                {"title": "RAM", "percentage": round(await get_percentage_used())},
-            ],
-            today_date=today_date,
-        )
+    weather_data = (
+        {
+            "location": weather["location"],
+            "current_temp": weather["temp"],
+            "current_icon": weather["icon_url"],
+            "forecast": weather["forecast"],
+        }
+        if show_weather
+        else {
+            "location": "Weather disabled",
+            "current_temp": "Weather disabled",
+            "current_icon": "Weather disabled",
+            "forecast": "Weather disabled",
+        }
+    )
 
     return await render_template(
         "home.jinja2",
         title="Home",
         greeting=greeting,
-        location="Weather disabled",
-        current_temp="Weather disabled",
-        current_icon="Weather disabled",
-        forecast="Weather disabled",
         show_weather=show_weather,
         engine=search_engine,
         stats=[
@@ -93,6 +87,7 @@ async def index():
             {"title": "RAM", "percentage": round(await get_percentage_used())},
         ],
         today_date=today_date,
+        **weather_data,
     )
 
 
