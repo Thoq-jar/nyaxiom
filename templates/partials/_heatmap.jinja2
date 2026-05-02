@@ -1,0 +1,14 @@
+<div class="heatmap" style="--cols: {{ (stats|length / 2)|round(0, 'ceil')|int }};">
+    {% for stat in stats %}
+    {% set pct = stat.percentage %}
+    {% if pct < 25 %}{% set level = 1 %}
+    {% elif pct < 50 %}{% set level = 2 %}
+    {% elif pct < 75 %}{% set level = 3 %}
+    {% else %}{% set level = 4 %}
+    {% endif %}
+    <div class="heatmap-cell level-{{ level }}" title="{{ stat.title }}: {{ pct }}%">
+        <span class="cell-label">{{ stat.title }}</span>
+        <span class="cell-value">{{ pct }}%</span>
+    </div>
+    {% endfor %}
+</div>

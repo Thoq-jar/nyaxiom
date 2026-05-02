@@ -5,6 +5,9 @@
     --text-primary: #fce8f5;
     --text-secondary: #c288b2;
     --accent: oklch(70% 0.18 345);
+    --accent-dim-1: oklch(30% 0.18 345);
+    --accent-dim-2: oklch(50% 0.18 345);
+    --accent-dim-3: oklch(60% 0.18 345);
     --sidebar-width: 250px;
     --right-panel-width: 350px;
     --accent-gradient-start: oklch(85% 0.1 345);
@@ -34,6 +37,9 @@
     --text-primary: #4a1936;
     --text-secondary: #9c5c80;
     --accent: oklch(60% 0.18 345);
+    --accent-dim-1: oklch(90% 0.18 345);
+    --accent-dim-2: oklch(80% 0.18 345);
+    --accent-dim-3: oklch(70% 0.18 345);
     --sidebar-width: 250px;
     --right-panel-width: 350px;
     --nav-active-bg: rgba(120, 30, 80, 0.06);
@@ -837,4 +843,53 @@ input:checked + .slider {
 
 input:checked + .slider:before {
     transform: translateX(1.5em);
+}
+
+.heatmap {
+    display: grid;
+    grid-template-columns: repeat(var(--cols, 5), 1fr);
+    gap: 8px;
+}
+
+.heatmap-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 10px;
+    border-radius: 6px;
+    cursor: default;
+    transition: opacity 0.15s;
+    aspect-ratio: 1;
+}
+
+.cell-label {
+    font-size: 13px;
+    opacity: 0.75;
+    margin-bottom: 4px;
+}
+
+.cell-value {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.level-1 {
+    background: var(--accent-dim-1);
+    color: var(--text-primary);
+}
+
+.level-2 {
+    background: var(--accent-dim-2);
+    color: var(--text-primary);
+}
+
+.level-3 {
+    background: var(--accent-dim-3);
+    color: var(--text-primary);
+}
+
+.level-4 {
+    background: var(--accent);
+    color: var(--text-primary);
 }
