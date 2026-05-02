@@ -46,13 +46,15 @@ async def index():
         .engine.replace("%s", "")
     )
 
-    hour = datetime.now().hour
-    if hour < 12:
-        greeting = "Good morning"
-    elif 12 <= hour < 18:
-        greeting = "Good afternoon"
-    else:
-        greeting = "Good evening"
+    greeting: str = (
+        "Good morning"
+        if datetime.now().hour < 12
+        else "Good afternoon"
+        if datetime.now().hour < 18
+        else "Good evening"
+        if datetime.now().hour < 21
+        else "Good night"
+    )
 
     weather = {}
     if show_weather:
