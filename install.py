@@ -149,6 +149,7 @@ def main() -> None:
     print(" | To start Axiom, run: `sudo systemctl start axiomd`")
     print(" | To enable Axiom on boot, run: `sudo systemctl enable axiomd`")
     print(" | To do both, run: `sudo systemctl enable --now axiomd`")
+    print(" | If you just updated, run: `sudo systemctl restart axiomd`")
 
 
 if __name__ == "__main__":
