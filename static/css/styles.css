@@ -558,8 +558,9 @@ main {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    padding: 40px 40px 20px 40px;
+    padding: 20px 40px 20px 40px;
     overflow: hidden;
+    scrollbar-width: none;
 }
 
 .log-header {
@@ -578,13 +579,12 @@ main {
 .log-content {
     background-color: var(--log-content-bg);
     border-radius: 20px;
-    padding: 20px;
+    padding: 0 20px 20px 20px;
     flex-grow: 1;
     overflow: auto;
     font-family:
         "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
     font-size: 13px;
-    line-height: 1.6;
     color: var(--log-text);
     border: 1px solid var(--border-dim);
     white-space: pre;
@@ -600,10 +600,8 @@ main {
 }
 
 .log-line {
-    height: 23px;
-    line-height: 21px;
     margin-bottom: 0;
-    padding: 1px 4px;
+    padding: 0.25em 0.5em;
     border-radius: 3px;
     box-sizing: border-box;
 }

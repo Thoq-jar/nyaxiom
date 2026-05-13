@@ -312,8 +312,7 @@ function renderVirtualScroll(forceUpdate = false) {
     .map((item) => {
       return /* HTML */ `
         <div class="log-line ${item.isMatch ? "match" : ""}">
-          <span
-            style="color: var(--accent); opacity: 0.7; font-size: 0.8em; margin-right: 8px;"
+          <span style="color: var(--accent); opacity: 0.7; font-size: 0.8em;"
             >[${item.logName}]</span
           >${escapeHtml(item.line)}
         </div>
@@ -425,6 +424,6 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 setInterval(updateStats, UPDATE_INTERVAL);
-setInterval(updateLogs, UPDATE_INTERVAL);
+setInterval(updateLogs, UPDATE_INTERVAL * 100);
 updateStats();
 updateLogs();

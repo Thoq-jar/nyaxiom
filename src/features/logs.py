@@ -42,13 +42,19 @@ def read_log_dirs():
         files: list[Path] = read_dir_if_exists(path)
 
         for file_path in files:
-            if file_path.exists() and file_path.is_file():
-                logs.append(file_path)
+            try:
+                if file_path.exists() and file_path.is_file():
+                    logs.append(file_path)
+            except Exception:
+                continue
 
     for directory in macos_dirs:
         files: list[Path] = read_dir_if_exists(directory)
         for file_path in files:
-            if file_path.is_file() and "log" in file_path.name.lower():
-                logs.append(file_path)
+            try:
+                if file_path.is_file() and "log" in file_path.name.lower():
+                    logs.append(file_path)
+            except Exception:
+                continue
 
     return logs
